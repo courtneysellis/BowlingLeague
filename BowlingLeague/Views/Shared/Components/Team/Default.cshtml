@@ -1,0 +1,12 @@
+﻿@model IEnumerable<Teams>
+
+<a class="btn btn-block" asp-action="Index" asp-controller="Home" asp-route-teamid="">Home</a>
+<br />
+
+<!--Makes a link for each team that will filter the results by that team-->
+@foreach(var t in Model)
+    {
+        <a class="btn btn-block @(t.TeamName == ViewBag.SelectedTeam ? "btn-primary" : "btn-outline-secondary")" 
+           asp-action="Index" asp-controller="Home" asp-route-teamid="@t.TeamId" asp-route-team="@t.TeamName">@t.TeamName</a>
+        <br />
+    }

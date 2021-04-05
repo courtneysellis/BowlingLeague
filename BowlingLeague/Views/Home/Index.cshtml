@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model IndexViewModel
+
+<!--Header of the team name if a team is selected-->
+@if (Model.TeamName != null) 
+    {
+        <h1>@Model.TeamName</h1>
+    }
+
+<!--Prints each bowlers information-->
+@foreach (var b in Model.Bowlers)
+    {
+        <div class="card card-body">
+            <p>@b.BowlerFirstName @b.BowlerMiddleInit @b.BowlerLastName</p>
+            <p>@b.BowlerAddress</p>
+            <p>@b.BowlerCity, @b.BowlerState @b.BowlerZip</p>
+            <p>@b.BowlerPhoneNumber</p>
+        </div>
+    }
+
+<!--Creates the pagination + CSS using tag helpers-->
+<div page-info="@Model.PageNumInfo" page-url-team="@Model.TeamName"
+     page-classes-enabled="true" page-class="btn" page-class-normal="btn-outline-dark"
+     page-class-selected="btn-primary" class="btn-group m-1">
+
+</div>
